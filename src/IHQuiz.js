@@ -9,10 +9,31 @@ import {
 } from 'react-native';
 
 import Style from './style/IHQuizStyle'
+import DropdownAlert from 'react-native-dropdownalert'
+
+const item = {
+  key: 0,
+  backgroundColor: '#2B73B6',
+  type: 'info',
+  title: 'Info',
+  message: 'Essa função está sendo implementada.'
+};
 
 export default class IHQuiz extends Component {
   constructor(props) {
     super(props);
+  }
+
+  showAlert(item) {
+    this.dropdown.alertWithType(item.type, item.title, item.message);
+  }
+
+  dismissAlert = () => {
+    this.dropdown.onClose();
+  }
+
+  onClose(data) {
+    console.log(data);
   }
 
   render() {
@@ -28,7 +49,7 @@ export default class IHQuiz extends Component {
         <View style={Style.buttonView}>
           <TouchableOpacity
             style={Style.button}
-            onPress={() => {Alert.alert('battle')}}
+            onPress={() => this.showAlert(item)}
           >
             <Image
               source={require('../static/assets/sword-battle.png')}
@@ -38,15 +59,23 @@ export default class IHQuiz extends Component {
           </TouchableOpacity>
           <TouchableOpacity
             style={Style.button}
-            onPress={() => {Alert.alert('train')}}
+            onPress={() => this.showAlert(item)}
           >
             <Image
               source={require('../static/assets/sword.png')}
               style={Style.buttonImage}
             />
-          <Text style={Style.buttonTitle} >Treinar</Text>
+            <Text style={Style.buttonTitle} >Treinar</Text>
           </TouchableOpacity>
         </View>
+        <DropdownAlert
+          ref={(ref) => this.dropdown = ref}
+          containerStyle={{
+            backgroundColor: "#2B73B6",
+          }}
+          onClose={(data) => this.onClose(data)}
+          imageSrc={'https://facebook.github.io/react/img/logo_og.png'}
+        />
       </View>
     );
   }
