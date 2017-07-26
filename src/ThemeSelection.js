@@ -51,7 +51,7 @@ export default class ThemeSelection extends Component {
           }}
             source={{uri: 'https://classconnection.s3.amazonaws.com/930/flashcards/2613930/gif/colourwheel01-144386D03C44B8716C4.gif'}}
         />
-      <TouchableOpacity style={} onPress={() => this.spin()}>
+      <TouchableOpacity style={Style.pickingButton} onPress={() => this.spin()}>
         <Text style={{fontSize: 36}}>Escolher tema</Text>
       </TouchableOpacity>
       </View>
