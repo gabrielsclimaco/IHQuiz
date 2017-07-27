@@ -42,6 +42,10 @@ export default class ThemeSelection extends Component {
     })
     return (
       <View style={Style.container}>
+        <Image
+          style={Style.themeIndicator}
+          source={require('../static/assets/drop-down-arrow.png')}
+        />
         <Animated.Image
           style={{
             width: 300,

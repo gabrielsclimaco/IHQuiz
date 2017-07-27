@@ -17,6 +17,14 @@ const Style = StyleSheet.create({
     marginTop: 15,
     borderRadius: 3,
     padding: 10,
+    borderColor: '#384684',
+    backgroundColor: '#fafafa',
+  },
+  themeIndicator: {
+    height: responsiveHeight(10),
+    width: responsiveWidth(20),
+    marginBottom: -30,
+    zIndex: 2,
   }
 })
 

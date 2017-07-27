@@ -27,6 +27,7 @@ const Style = StyleSheet.create({
     fontSize: responsiveFontSize(7),
     fontWeight: '500',
     paddingLeft: 15,
+    fontFamily: 'Helvetica',
   },
   buttonView: {
     flex: 6,
