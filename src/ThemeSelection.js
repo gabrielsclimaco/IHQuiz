@@ -9,7 +9,8 @@ import {
   Text,
 } from 'react-native';
 
-import Style from './style/ThemeSelectionStyle'
+import Style from './style/ThemeSelectionStyle';
+import FadeInView from './components/FadeInView';
 
 export default class ThemeSelection extends Component {
   static navigationOptions = {
@@ -20,10 +21,6 @@ export default class ThemeSelection extends Component {
     super(props);
 
     this.spinValue = new Animated.Value(0);
-  }
-
-  componentDidMount () {
-    // this.spin()
   }
 
   spin () {
@@ -42,22 +39,29 @@ export default class ThemeSelection extends Component {
     })
     return (
       <View style={Style.container}>
-        <Image
-          style={Style.themeIndicator}
-          source={require('../static/assets/drop-down-arrow.png')}
-        />
-        <Animated.Image
-          style={{
-            width: 300,
-            height: 300,
-            marginBottom: 15,
-            transform: [{rotate: spin}],
-          }}
+        <FadeInView
+          duration={500}
+          style={{alignItems: 'center',}}
+        >
+          <Image
+            style={Style.themeIndicator}
+            source={require('../static/assets/drop-down-arrow.png')}
+            />
+          <Animated.Image
+            style={{
+              width: 300,
+              height: 300,
+              marginBottom: 15,
+              transform: [{rotate: spin}],
+            }}
             source={require('../static/assets/complete-spinning-wheel.png')}
-        />
-      <TouchableOpacity style={Style.pickingButton} onPress={() => this.spin()}>
-        <Text style={{fontSize: 36}}>Escolher tema</Text>
-      </TouchableOpacity>
+            />
+        </FadeInView>
+        <FadeInView duration={1000}>
+          <TouchableOpacity style={Style.pickingButton} onPress={() => this.spin()}>
+            <Text style={{fontSize: 36}}>Escolher tema</Text>
+          </TouchableOpacity>
+        </FadeInView>
       </View>
     )
   }
