@@ -29,14 +29,14 @@ export default class ThemeSelection extends Component {
   spin () {
     this.spinValue.setValue(0)
     Animated.timing(this.spinValue ,{
-      toValue: 1,
-      duration: 1500,
+      toValue: 2,
+      duration: 2000,
       easing: Easing.linear,
     }).start();
   }
 
   render() {
-    const spin = this.spinValue.interpolate({
+    let spin = this.spinValue.interpolate({
       inputRange: [0, Math.random() * (.8 - .5) + .5],
       outputRange: ['0deg', '480deg']
     })
@@ -44,12 +44,12 @@ export default class ThemeSelection extends Component {
       <View style={Style.container}>
         <Animated.Image
           style={{
-            width: 227,
-            height: 227,
+            width: 300,
+            height: 300,
             marginBottom: 15,
             transform: [{rotate: spin}],
           }}
-            source={{uri: 'https://classconnection.s3.amazonaws.com/930/flashcards/2613930/gif/colourwheel01-144386D03C44B8716C4.gif'}}
+            source={require('../static/assets/complete-spinning-wheel.png')}
         />
       <TouchableOpacity style={Style.pickingButton} onPress={() => this.spin()}>
         <Text style={{fontSize: 36}}>Escolher tema</Text>
