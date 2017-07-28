@@ -23,18 +23,19 @@ export default class ThemeSelection extends Component {
     this.spinValue = new Animated.Value(0);
   }
 
-  spin () {
+  spin (spin) {
     this.spinValue.setValue(0)
     Animated.timing(this.spinValue ,{
-      toValue: 2,
-      duration: 2000,
-      easing: Easing.linear,
-    }).start();
+      toValue: 1,
+      duration: 2400,
+      easing: Easing.elastic(.9),
+    }).start(() => console.log('ALTOS SPINZAO BIXO', this.spinValue));
   }
 
   render() {
     let spin = this.spinValue.interpolate({
-      inputRange: [0, Math.random() * (.8 - .5) + .5],
+      // inputRange: [0, Math.random() * (.8 - .5) + .5],
+      inputRange: [0, .58],
       outputRange: ['0deg', '480deg']
     })
     return (
@@ -58,7 +59,7 @@ export default class ThemeSelection extends Component {
             />
         </FadeInView>
         <FadeInView duration={1000}>
-          <TouchableOpacity style={Style.pickingButton} onPress={() => this.spin()}>
+          <TouchableOpacity style={Style.pickingButton} onPress={() => this.spin(spin)}>
             <Text style={{fontSize: 36}}>Escolher tema</Text>
           </TouchableOpacity>
         </FadeInView>
