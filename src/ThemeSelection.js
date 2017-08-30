@@ -34,8 +34,8 @@ export default class ThemeSelection extends Component {
 
   render() {
     let spin = this.spinValue.interpolate({
-      // inputRange: [0, Math.random() * (.8 - .5) + .5],
-      inputRange: [0, .58],
+      inputRange: [0, Math.random() * (.8 - .5) + .5],
+      // inputRange: [0, .58],
       outputRange: ['0deg', '480deg']
     })
     return (
